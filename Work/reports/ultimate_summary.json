@@ -1,0 +1,106 @@
+{
+  "timestamp": "2025-11-12T17:30:45.035449",
+  "configuration": {
+    "tta_enabled": false,
+    "tta_augmentations": 0,
+    "mc_dropout_enabled": false,
+    "mc_iterations": 0,
+    "temperature": 1.0,
+    "caching_enabled": true,
+    "device": "cuda",
+    "batch_size": 64
+  },
+  "overall_metrics": {
+    "total_samples": 31524,
+    "accuracy": 0.9734805227762974,
+    "quadratic_kappa": 0.9627228138123409,
+    "f1_weighted": 0.9733242460938233,
+    "auc_ovr": 0.9907469654320669,
+    "error_rate": 0.026519477223702626,
+    "avg_confidence": 0.8592553745812003,
+    "avg_total_uncertainty": 0.2778260961280761,
+    "avg_epistemic_uncertainty": 0.0,
+    "avg_aleatoric_uncertainty": 0.2778260961280761
+  },
+  "per_class_metrics": {
+    "No DR": {
+      "sensitivity_recall": 0.9869587453119673,
+      "specificity": 0.9447890818858561,
+      "precision": 0.9811464644324874,
+      "support": 23464
+    },
+    "Mild": {
+      "sensitivity_recall": 0.8786684187472624,
+      "specificity": 0.9945282309086556,
+      "precision": 0.9261311172668514,
+      "support": 2283
+    },
+    "Moderate": {
+      "sensitivity_recall": 0.9519792342634653,
+      "specificity": 0.9919333853760083,
+      "precision": 0.9530099610220875,
+      "support": 4623
+    },
+    "Severe": {
+      "sensitivity_recall": 0.9702702702702702,
+      "specificity": 0.9997401247401247,
+      "precision": 0.9889807162534435,
+      "support": 740
+    },
+    "Proliferative": {
+      "sensitivity_recall": 0.9782608695652174,
+      "specificity": 0.9998071359691417,
+      "precision": 0.9854014598540146,
+      "support": 414
+    }
+  },
+  "ensemble_weights": {
+    "ResNet50": 0.2611719273449596,
+    "DenseNet201": 0.2761061999484942,
+    "EfficientNetV2L": 0.22773206585696665,
+    "ConvNeXt_L": 0.2349898068495794
+  },
+  "model_performance": {
+    "ResNet50": {
+      "qwk": 0.770604626487493,
+      "accuracy": 0.8456780333068993,
+      "f1": 0.8365113434977944
+    },
+    "DenseNet201": {
+      "qwk": 0.7923306285772145,
+      "accuracy": 0.8651863600317209,
+      "f1": 0.8501739793400744
+    },
+    "EfficientNetV2L": {
+      "qwk": 0.7195822764508122,
+      "accuracy": 0.8120539254559873,
+      "f1": 0.7938279644400952
+    },
+    "ConvNeXt_L": {
+      "qwk": 0.7309587634502006,
+      "accuracy": 0.8079302141157811,
+      "f1": 0.7987442905288341
+    }
+  },
+  "error_analysis": {
+    "total_errors": 836,
+    "error_rate": 0.026519477223702577,
+    "severity_breakdown": {
+      "off_by_1": 465,
+      "off_by_2": 369,
+      "off_by_3": 0,
+      "off_by_4": 2
+    },
+    "high_uncertainty_errors": 29,
+    "low_confidence_errors": 144,
+    "overconfident_errors": 137
+  },
+  "model_agreement": {
+    "ConvNeXt_L_vs_DenseNet201": 0.9123524933384088,
+    "ConvNeXt_L_vs_EfficientNetV2L": 0.9125111026519477,
+    "ConvNeXt_L_vs_ResNet50": 0.8948737469864231,
+    "DenseNet201_vs_EfficientNetV2L": 0.9140971957873366,
+    "DenseNet201_vs_ResNet50": 0.9138751427483822,
+    "EfficientNetV2L_vs_ResNet50": 0.8950006344372542
+  }
+}

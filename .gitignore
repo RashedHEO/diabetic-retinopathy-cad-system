@@ -1,0 +1,4 @@
+__pycache__/
+*.pyc
+Work/*.pth
+Work/camera_*.jpg

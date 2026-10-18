@@ -1,0 +1,94 @@
+======================================================================
+DIABETIC RETINOPATHY - ENHANCED EDA SUMMARY REPORT
+======================================================================
+
+Generated: 2025-11-12 18:35:59
+Feature Extraction: Deep Learning (2048 features)
+   - Model: ResNet50 (pre-trained on ImageNet)
+   - Features: 2048-dim vector from final avgpool layer
+
+DATASET OVERVIEW:
+   Total images: 35,108
+   Valid images: 35,108
+   Corrupted: 0
+   Quality issues: 313
+
+CLASS DISTRIBUTION:
+ class_label      severity  count  percentage
+           0         No DR  25802       73.49
+           1          Mild   2438        6.94
+           2      Moderate   5288       15.06
+           3        Severe    872        2.48
+           4 Proliferative    708        2.02
+
+   Balance Ratio (max/min): 36.44
+   Shannon Entropy: 0.8672
+
+NORMALIZATION VALUES (ImageNet):
+   Mean (RGB): [0.485, 0.456, 0.406]
+   Std (RGB):  [0.229, 0.224, 0.225]
+
+FEATURE SPACE ANALYSIS:
+   Class Separability Ratio: 0.0335
+   → Higher values indicate better-separated classes
+
+OUTLIER ANALYSIS (Multi-Method Consensus):
+   Total outliers: 2816
+   Detection rate: 8.02%
+
+   Top 15 outliers (highest anomaly score):
+   14915_right.jpeg                              class=2 score=0.7787 votes=3
+   2258_left.jpeg                                class=0 score=0.7632 votes=3
+   13627_left.jpeg                               class=2 score=0.7542 votes=3
+   7470_right.jpeg                               class=0 score=0.7531 votes=3
+   15038_right.jpeg                              class=4 score=0.7323 votes=3
+   10440_left.jpeg                               class=0 score=0.7317 votes=2
+   2857_right.jpeg                               class=0 score=0.7268 votes=3
+   31160_left.jpeg                               class=2 score=0.7266 votes=2
+   17215_right.jpeg                              class=0 score=0.7062 votes=2
+   31202_right.jpeg                              class=3 score=0.7044 votes=2
+   2275_left.jpeg                                class=3 score=0.6999 votes=3
+   27481_right.jpeg                              class=0 score=0.6996 votes=3
+   29020_left.jpeg                               class=1 score=0.6979 votes=3
+   12950_left.jpeg                               class=0 score=0.6916 votes=3
+   20306_left.jpeg                               class=0 score=0.6865 votes=2
+
+======================================================================
+KEY FINDINGS & RECOMMENDATIONS:
+======================================================================
+
+⚠️  SEVERE CLASS IMBALANCE DETECTED!
+   Ratio: 36.4:1
+   Recommendations:
+   • Use class_weight='balanced' in loss function
+   • Apply Focal Loss to focus on hard examples
+   • Consider SMOTE or class-balanced sampling
+   • Use stratified train/val splits
+
+⚠️  313 IMAGES WITH QUALITY ISSUES
+   These images are too dark or uniform
+   → Consider manual review or exclusion
+
+⚠️  2816 OUTLIERS DETECTED
+   These are semantically different from the dataset
+   Recommendations:
+   • Review 'outliers_enhanced.csv' manually
+   • Consider excluding high-score outliers (score > 0.8)
+   • These may be artifacts, black images, or mislabeled
+
+⚠️  LOW CLASS SEPARABILITY (ratio = 0.03)
+   Classes overlap significantly in feature space
+   Recommendations:
+   • Use more powerful models (EfficientNet, Vision Transformer)
+   • Apply advanced data augmentation
+   • Consider ordinal regression (classes are ordered)
+
+======================================================================
+NEXT STEPS:
+======================================================================
+1. Review and handle outliers (outliers_enhanced.csv)
+2. Address class imbalance in training pipeline
+3. Use ImageNet normalization values
+4. Consider stratified K-fold cross-validation
+5. Monitor per-class performance during training
+======================================================================

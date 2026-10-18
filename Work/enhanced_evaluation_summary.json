@@ -1,0 +1,19 @@
+{
+  "timestamp": "2025-11-04T18:12:32.285975",
+  "total_samples": 31524,
+  "accuracy": 0.9711331049359219,
+  "qwk": 0.9594859663339635,
+  "f1_weighted": 0.9709556486712783,
+  "avg_confidence": 0.8089580886371319,
+  "avg_uncertainty": 0.35873333871089863,
+  "tta_enabled": false,
+  "tta_augmentations": 0,
+  "temperature": 1.0,
+  "model_weights": {
+    "DINOv3_ViTL16": 0.17989413126223794,
+    "ResNet50": 0.20971705591799022,
+    "DenseNet201": 0.21562970299862447,
+    "EfficientNetV2L": 0.19583152153639316,
+    "ConvNeXt_L": 0.1989275882847541
+  }
+}

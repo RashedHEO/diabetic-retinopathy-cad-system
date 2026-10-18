@@ -1,0 +1,54 @@
+============================================================
+DIABETIC RETINOPATHY - EDA SUMMARY REPORT
+============================================================
+
+Generated: 2025-10-29 15:34:20
+Feature Extraction: Deep Learning (2048 features)
+   - Model: ResNet50 (pre-trained on ImageNet)
+   - Features: 2048-dim vector from final avgpool layer
+
+DATASET OVERVIEW:
+   Total images: 35,108
+   Valid images: 35,108
+   Corrupted: 0
+
+CLASS DISTRIBUTION:
+ class_label      severity  count  percentage
+           0         No DR  25802       73.49
+           1          Mild   2438        6.94
+           2      Moderate   5288       15.06
+           3        Severe    872        2.48
+           4 Proliferative    708        2.02
+
+NORMALIZATION VALUES (ImageNet):
+   Mean (RGB): [0.485, 0.456, 0.406]
+   Std (RGB):  [0.229, 0.224, 0.225]
+
+OUTLIER ANALYSIS (Deep Features):
+   Total outliers: 3584
+
+   Top 10 outliers (most dissimilar to dataset):
+   30120_right.jpeg                         class=0 dist=0.7325
+   14915_right.jpeg                         class=2 dist=0.7140
+   31160_left.jpeg                          class=2 dist=0.7112
+   10440_left.jpeg                          class=0 dist=0.7028
+   7470_right.jpeg                          class=0 dist=0.6937
+   31202_right.jpeg                         class=3 dist=0.6924
+   17215_right.jpeg                         class=0 dist=0.6874
+   20306_left.jpeg                          class=0 dist=0.6866
+   35581_left.jpeg                          class=0 dist=0.6859
+   14216_left.jpeg                          class=0 dist=0.6855
+
+============================================================
+KEY FINDINGS:
+============================================================
+ SEVERE CLASS IMBALANCE!
+   Ratio: 36.4:1
+   → Use class_weight='balanced' or oversample minority classes
+
+ 3584 OUTLIERS DETECTED.
+   → These are semantically different (e.g., black images, artifacts).
+   → Manual review of 'outliers.csv' is highly recommended.
+
+ Dataset ready for modeling
+ Use ImageNet normalization values in your training pipeline
